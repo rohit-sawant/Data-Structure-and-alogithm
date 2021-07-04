@@ -1,0 +1,49 @@
+//question link:https://practice.geeksforgeeks.org/problems/first-negative-integer-in-every-window-of-size-k3345/1#
+class Compute {
+    
+    public long[] printFirstNegativeInteger(long arr[], int n, int k)
+    {
+        LinkedList<Integer> list = new LinkedList<Integer>();
+        StringBuffer sb = new StringBuffer("");
+        long answer[] = new long[n-k+1];
+        int j = 0;
+        int i = 0;
+        while(i<k){
+            if(arr[i]<0){
+                list.add(i);
+            }
+            i++;
+        }
+        for(;i<n;i++){
+            if(!list.isEmpty()){
+                answer[j]= arr[list.peek()];
+                j++;
+                sb.append(arr[list.peek()]+" ");
+            }
+            else{
+                answer[j]= 0;
+                j++;
+                sb.append("0 ");
+            }
+            while(!list.isEmpty()&&(list.peek()<i-k+1)){
+                list.remove();
+            }
+            if(arr[i]<0){
+                list.add(i);
+            }
+        }
+        if(!list.isEmpty()){
+            answer[j]= arr[list.peek()];
+            j++;
+            sb.append(arr[list.peek()]+" ");
+        }
+        else
+        {
+            answer[j]= 0;
+            j++;
+            sb.append("0 ");
+        }
+        // System.out.print(sb);
+        return answer;
+    }
+}

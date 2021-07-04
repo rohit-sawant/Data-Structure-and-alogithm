@@ -1,0 +1,18 @@
+#question link: https://practice.geeksforgeeks.org/problems/merge-two-sorted-arrays5135/1#
+
+class Solution {
+
+    public void merge(int a1[], int a2[], int n, int m) {
+        // code here
+        int i =n-1,j=0;
+        while(i>=0&&j<m && a1[i]>a2[j]){
+            int temp = a1[i];
+            a1[i] = a2[j];
+            a2[j] = temp;
+            i--;
+            j++;
+        }
+        Arrays.sort(a1);
+        Arrays.sort(a2);
+    }
+}

@@ -1,0 +1,7 @@
+This is a simple implementation of HashTable. In order to solve the collision i have used seperate chaining method.
+Time complexity:
+->                        BEST        AVG.         WORST
+Insertion               O(1)         O(1)            O(n)
+deletion                O(1)         O(1)            O(n)
+Searching             O(1)         O(1)            O(n)
+Contains               O(1)         O(1)            O(n)

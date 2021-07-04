@@ -1,0 +1,24 @@
+question link:https://practice.geeksforgeeks.org/problems/max-sum-subarray-of-size-k5313/1#
+class Solution{
+    static int maximumSumSubarray(int k, ArrayList<Integer> arr,int n){
+        int i =0,j=0;
+        int sum = 0;
+        int maxsum=0;
+        while(j<n){
+            sum = sum+arr.get(j);
+            if(j-i+1!=k){
+                j++;
+                
+            }
+            else
+            {
+                maxsum = Math.max(maxsum,sum);
+                sum = sum-arr.get(i);
+                i++;
+                j++;
+            }
+        }
+        return maxsum;
+        // code here
+    }
+}
