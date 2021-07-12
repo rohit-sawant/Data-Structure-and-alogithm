@@ -1,1 +1,22 @@
 
+//question: https://leetcode.com/problems/merge-intervals/
+class Solution {
+    public int[][] merge(int[][] intervals) {
+    Arrays.sort(intervals,(arr1,arr2)-> Integer.compare(arr1[0],arr2[0]));
+        List<int[]> outputarr = new ArrayList<>();
+        int[] current_interval = intervals[0];
+        outputarr.add(current_interval);
+
+        for(int[] interval:intervals){
+            if(current_interval[1]>=interval[0]){
+                current_interval[1] = Math.max(current_interval[1],interval[1]);
+            }
+            else
+            {
+                current_interval = interval;
+                outputarr.add(current_interval);
+            }
+        }
+        return outputarr.toArray(new int[outputarr.size()][]);
+    }
+}
