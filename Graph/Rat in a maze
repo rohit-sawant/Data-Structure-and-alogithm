@@ -1,0 +1,26 @@
+//question: https://practice.geeksforgeeks.org/problems/rat-in-a-maze-problem/1
+class Solution
+{
+    //Function to return a list containing the DFS traversal of the graph.
+    public ArrayList<Integer> dfsOfGraph(int V, ArrayList<ArrayList<Integer>> adj)
+    {
+        // Code here
+        ArrayList<Integer> al = new ArrayList<Integer>();
+        boolean vis[] = new boolean[adj.size()];
+        vis[0] = true;
+        al.add(0);
+        dfsUtil(0,adj,vis,al);
+        return al;
+        
+    }
+    public static void dfsUtil(int index,ArrayList<ArrayList<Integer>> adj,boolean[] vis,ArrayList<Integer> al )
+    {
+        for(int neighbor:adj.get(index)){
+            if(!vis[neighbor]){
+                vis[neighbor] = true;
+                al.add(neighbor);
+                dfsUtil(neighbor,adj,vis,al);
+            }
+        }
+    }
+}
